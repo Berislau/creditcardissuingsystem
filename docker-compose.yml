@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   postgres_db:
-    image: postgres:16.2
+    image: postgres:15
     container_name: rbaPostgres
     restart: always
     environment:
@@ -9,7 +9,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin123
     ports:
-      # Korist port 5433 da ne dolazi do sukoba sa postgresSQL postojecom instalacijom na Windowsu
+      # port 5433 da ne dolazi do sukoba sa postgresSQL postojecom instalacijom na Windowsu
       - "5433:5432"
     volumes:
       - postgres_db_data:/var/lib/postgresql/data

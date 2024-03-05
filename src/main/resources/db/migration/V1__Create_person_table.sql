@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS person (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(255) NOT NULL,
+    last_name VARCHAR(255) NOT NULL,
+    oib CHAR(11) UNIQUE NOT NULL,
+    status VARCHAR(255) NOT NULL
+);
