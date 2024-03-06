@@ -4,9 +4,11 @@ import com.bmbank.creditcardissuingsystem.constants.StatusEnum;
 import com.bmbank.creditcardissuingsystem.dto.PersonDTO;
 import com.bmbank.creditcardissuingsystem.entity.Person;
 import com.bmbank.creditcardissuingsystem.entity.Status;
+import com.bmbank.creditcardissuingsystem.exception.InvalidStatusException;
 import com.bmbank.creditcardissuingsystem.service.PersonService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ public class PersonController {
       description = "Creates a new person and stores it in the database.")
   @ApiResponse(responseCode = "201", description = "Person created successfully")
   @PostMapping
-  public ResponseEntity<Person> createPerson(@RequestBody PersonDTO personDTO) {
+  public ResponseEntity<Person> createPerson(@RequestBody @Valid PersonDTO personDTO) {
     Person person = convertToEntity(personDTO);
     Person savedPerson = personService.savePerson(person);
     return new ResponseEntity<>(savedPerson, HttpStatus.CREATED);
@@ -67,7 +69,7 @@ public class PersonController {
     person.setOib(personDTO.getOib());
 
     if (!StatusEnum.existsById(personDTO.getStatusId())) {
-      throw new RuntimeException("Invalid status ID: " + person.getStatus().getId());
+      throw new InvalidStatusException("Invalid status ID: " + person.getStatus().getId());
     }
 
     Long statusId = personDTO.getStatusId();

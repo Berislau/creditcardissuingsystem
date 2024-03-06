@@ -7,6 +7,7 @@ import com.bmbank.creditcardissuingsystem.entity.Person;
 import com.bmbank.creditcardissuingsystem.entity.Status;
 import com.bmbank.creditcardissuingsystem.exception.FileAlreadyExistsException;
 import com.bmbank.creditcardissuingsystem.exception.FileStorageException;
+import com.bmbank.creditcardissuingsystem.exception.InvalidStatusException;
 import com.bmbank.creditcardissuingsystem.exception.PersonAlreadyExistsException;
 import com.bmbank.creditcardissuingsystem.repository.PersonRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -42,7 +43,7 @@ public class PersonService {
     }
 
     if (!StatusEnum.existsById(person.getStatus().getId())) {
-      throw new RuntimeException("Invalid status ID: " + person.getStatus().getId());
+      throw new InvalidStatusException("Invalid status ID: " + person.getStatus().getId());
     }
     return personRepository.save(person);
   }
