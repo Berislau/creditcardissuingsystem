@@ -19,7 +19,6 @@
 		<flyway.url>jdbc:postgresql://localhost:5433/creditcarddb</flyway.url>
 		<flyway.user>postgres</flyway.user>
 		<flyway.password>admin123</flyway.password>
-		<flyway.cleanDisabled>false</flyway.cleanDisabled>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -92,6 +91,9 @@
 				<groupId>com.spotify.fmt</groupId>
 				<artifactId>fmt-maven-plugin</artifactId>
 				<version>2.22.1</version>
+				<configuration>
+					<style>AOSP</style>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
@@ -108,8 +110,27 @@
 					<url>${flyway.url}</url>
 					<user>${flyway.user}</user>
 					<password>${flyway.password}</password>
-					<cleanDisabled>${flyway.cleanDisabled}</cleanDisabled>
+					<cleanDisabled>false</cleanDisabled>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.11</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

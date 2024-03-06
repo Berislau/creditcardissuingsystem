@@ -1,36 +1,27 @@
 package com.bmbank.creditcardissuingsystem.entity;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.*;
-import java.util.Objects;
-import lombok.*;
-import org.hibernate.Hibernate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@RequiredArgsConstructor
 @ToString
 @Entity
 public class Status {
 
-  @Id
-  @Schema(accessMode = Schema.AccessMode.READ_ONLY)
-  private Long id;
+    @Id
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY)
+    private Long id;
 
-  @Column(nullable = false, unique = true)
-  private String name;
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-    Status status = (Status) o;
-    return id != null && Objects.equals(id, status.id);
-  }
-
-  @Override
-  public int hashCode() {
-    return getClass().hashCode();
-  }
+    @Column(nullable = false, unique = true)
+    private String name;
 }

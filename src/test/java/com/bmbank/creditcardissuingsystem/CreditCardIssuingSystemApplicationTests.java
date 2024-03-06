@@ -10,10 +10,10 @@ import org.springframework.context.ApplicationContext;
 @SpringBootTest
 class CreditCardIssuingSystemApplicationTests {
 
-  @Autowired private ApplicationContext context;
+    @Autowired private ApplicationContext context;
 
-  @Test
-  void contextLoads() {
-    assertNotNull(context);
-  }
+    @Test
+    void contextLoads() {
+        assertNotNull(context);
+    }
 }

@@ -5,6 +5,6 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Messages {
-  public static final String PERSON_NOT_FOUND = "Person not found with OIB: ";
-  public static final String TIME_PATTERN = "yyyyMMddHHmmss";
+    public static final String USER_NOT_FOUND = "User not found with OIB: ";
+    public static final String TIME_PATTERN = "yyyyMMddHHmmss";
 }
