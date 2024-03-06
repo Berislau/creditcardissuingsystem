@@ -1,7 +1,9 @@
 package com.bmbank.creditcardissuingsystem.validator;
 
 import com.bmbank.creditcardissuingsystem.exception.IllegalStatusIdException;
+
 import lombok.RequiredArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class StatusIdValidator {
 
     public void validateStatusId(long statusId) {
-        if(statusId < 1 || statusId > 2) {
+        if (statusId < 1 || statusId > 2) {
             throw new IllegalStatusIdException("StatusId must be 1 or 2");
         }
     }

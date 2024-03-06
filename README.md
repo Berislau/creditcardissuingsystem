@@ -40,4 +40,12 @@ Flyway can also be accessed through maven plugin, for example for easy database 
 
 Project uses automated formatting on every successful maven build.
 
+There is 1 configurable application parameter creditcardissuingsystem.file-storage-location used for storing generated file purposes.
+It can be modified from [properties](src/main/resources/application.properties)
+
 CI/CD implementation can be found in [workflows](.github/workflows)
+
+Logging configuration can be checked in [logback-spring](src/main/resources/logback-spring.xml)
+
+For automated tests application uses H2 DB simulated as PostgreSQL.
+Instead of going with Spring Profile approach tests use properties in [properties](src/test/resources/application.properties)

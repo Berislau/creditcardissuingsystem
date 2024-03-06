@@ -31,21 +31,3 @@ jobs:
 
       - name: Run tests
         run: mvn test
-
-  sonarcloud:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          sonarToken: ${{ secrets.SONAR_TOKEN }}

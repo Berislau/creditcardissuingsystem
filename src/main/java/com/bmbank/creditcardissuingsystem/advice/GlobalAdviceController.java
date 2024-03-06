@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalAdviceController {
 
     @ExceptionHandler({
-            FileAlreadyExistsException.class,
-            InvalidStatusException.class,
-            UserAlreadyExistsException.class,
-            InvalidOibException.class,
-            InvalidUserName.class,
-            IllegalStatusIdException.class
+        FileAlreadyExistsException.class,
+        InvalidStatusException.class,
+        UserAlreadyExistsException.class,
+        InvalidOibException.class,
+        InvalidUserName.class,
+        IllegalStatusIdException.class
     })
     public ResponseEntity<String> handleBadRequest(final RuntimeException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
